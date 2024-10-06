@@ -8,20 +8,27 @@ from PIL import Image, ImageTk
 # Initialize the text-to-speech engine
 engine = pyttsx3.init()
 
-# Define the text to be spoken and associated expressions
+# List available voices and choose a clearer one
+voices = engine.getProperty('voices')
+
+# You can select the appropriate voice based on your system, here we pick the second available voice (typically a female voice).
+engine.setProperty('voice', voices[1].id)  # Use index 1 for female voice, or change to any index that suits you.
+
+# Adjust the rate (speech speed) and volume for clarity
+engine.setProperty('rate', 173)  # Adjust speed (150 is a good average rate)
+engine.setProperty('volume', 1.0)  # Max volume (can lower if needed)
+
+
+
 speech_texts = [
-    ("Good morning dear. Welcome to tech expo 2024.", "y.png"),
-    ("We have good products to present to you.", "y.png"),
-    ("First room: Left side: Casper","sstt.png"),
-    ("  it's a smart home powered by AI.", "y.png"),
-    ("Right side: Crash","sstt.png"),
-    ("  it's a military robot, it can manually fight.", "y.png"),
-    ("Second room: Left side: Saver ","sstt.png"),
-    (" it helps farmers to maintain the food.", "y.png"),
-    ("Right side: Bleas ","sstt.png"),
-    (" healthcare robot.", "y.png"),
-    ("Thank you, I hope you enjoy our expo.", "f.png")
+    ("Welcome to Tech Expo 2024! Let's explore together!", "y.png"),
+    ("Ground floor:","sstt.png"),
+    (" Robot Roots Zone – Discover the history of robotics.", "y.png"),
+    ("Fourth floor: ","sstt.png"),
+    ("App and MechMuse Zones – Enjoy the graphic design competition and more.", "y.png"),
+    ("Thanks for visiting Tech Expo 2024. Have a great time!", "hh.png")
 ]
+
 
 # Create a queue to manage speech tasks
 speech_queue = queue.Queue()
@@ -130,8 +137,7 @@ eye_spacing = 150  # Adjust the spacing between the eyes here
 eye_vertical_offset = 100  # Adjust the vertical offset of the eyes here
 
 # Load images
-ellips_image_path = r'D:\projects\NIBM_EXPO_road_explain_robot\ellips.png'
-
+ellips_image_path = r'C:\Users\HP\Desktop\expo roboot\Tech_Expo_Robot_2024\final Tec Expo\ellips.png'
 ellips_image = ImageTk.PhotoImage(Image.open(ellips_image_path).resize((eye_size, eye_size)))
 
 # Create the canvas for drawing the face
@@ -144,7 +150,7 @@ right_eye = canvas.create_image(center_x + eye_spacing, center_y - eye_vertical_
 
 # Draw the mouth with voice wave shapes
 mouth_length = 200  # Adjust the length of the mouth here
-mouth_vertical_offset = 150  # Adjust the vertical offset of the mouth here
+mouth_vertical_offset = 200  # Adjust the vertical offset of the mouth here
 
 mouth_coords = [center_x - mouth_length // 2, center_y + mouth_vertical_offset, center_x + mouth_length // 2, center_y + mouth_vertical_offset]  # Adjusted straight line
 mouth_shapes_talk = [
