@@ -31,7 +31,7 @@ This project involves developing a robot interface for the NIBM Tech Expo 2024, 
 - Required Python packages:
 
   ```bash
-  pip install tkinter pyttsx3 Pillow 
+  pip install tk pyttsx3 Pillow 
   ```
 
 ### Update Image Paths: 
